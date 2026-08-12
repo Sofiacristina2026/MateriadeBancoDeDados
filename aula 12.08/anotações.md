@@ -50,7 +50,9 @@ erDiagram
 
 obs: Colocar a loja aqui no vs code
 CREATE TABLE produtos(
-   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY
+   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+   nome VACHAr (50) NOT NULL,
+   preco NUMERIC()
 
 
 
