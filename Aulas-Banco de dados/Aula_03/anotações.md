@@ -44,13 +44,13 @@ Entrar no PostgreSQL pelo VS Code (usando extensões oficiais ou ferramentas com
 
 ```mermaid
 graph LR
-A[sudo -u postgres psql]
+A["sudo -u postgres psql"]
 --<b>Autentificação</b-->B[Só funciona entrando dentro do próprio Linux Ubuntu, Debian]
 ```
 ```mermaid
 graph LR
-A[sudo psql -h 127.0.0.1 -U postgres]
---<b>Autentificação</b>-->B[funciona vindo de qualquer maquina, porém é necessário inserir a senha]
+    A["sudo psql -h 127.0.0.1 -U postgres"]
+    A -->|"Autenticação"| B["funciona vindo de qualquer máquina, porém é necessário inserir a senha"]
 ````
 ## Configurações de serviço
 Caminho padrão para as configurações do Postgres 
