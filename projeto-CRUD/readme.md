@@ -15,3 +15,4 @@ Para que por exemplo eu não precise colocar objeto "Platini" como = categoria d
 Eu simplifico a rota do processo 
 
 ![alt text](image.png)
+
