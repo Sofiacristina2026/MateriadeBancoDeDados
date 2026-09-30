@@ -1,107 +1,111 @@
-Aula do dia 09.09 
-Aprendendo comandos basícos
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesquisa de Satisfação</title>
+</head>
+<body>
 
-Para ver tudo da atbela 
-```sql
-SELECT * FROM produtos;
-```
+    <h1>Pesquisa de Satisfação</h1>
 
-Para mostrar quantidades de linhas: 
+    <form action="">
 
-```sql
-SELECT COUNT(*)
-FROM produtos;
-```
- Ver o total de registros porém não é o total de produtos resssalte !
+        <label for="nome">
+            Nome:
+        </label>
+        <br>
+        <input type="text"
+        id="nome"
+        name="nome"
+        required
+        placeholder="Digite seu nome">
+        <br><br>
 
-```sql
-SELECT COUNT (*) AS
-total_registros
-FROM produtos,
-```
-Se eu quero saber quantos produtos estão abaixo da quantidade miníma 
+        <label for="email">
+            E-mail:
+        </label>
+        <br>
+        <input type="email"
+        id="email"
+        name="email"
+        required
+        placeholder="Digite seu e-mail">
+        <br><br>
 
-```sql
-SELECT COUNT(*) AS
-produtos_baixo_estoque
-FROM produtos 
-WHERE estoque < 10;
-```
+        <label for="telefone">
+            Telefone:
+        </label>
+        <br>
+        <input type="tel"
+        id="telefone"
+        name="telefone"
+        required
+        placeholder="(00) 00000-0000">
+        <br><br>
 
- Quantos estãoa acima da quantidade miníma 
+        <label for="unidade">
+            Unidade atendida:
+        </label>
+        <br>
 
-```sql
-SELECT COUNT(*) AS
-produtos_baixo_estoque
-FROM produtos 
-WHERE estoque > 10;
-```
+        <select id="unidade" name="unidade">
+            <option value="">Selecione uma unidade</option>
+            <option value="campinas">Campinas</option>
+            <option value="americana">Americana</option>
+            <option value="limeira">Limeira</option>
+        </select>
 
-> OBS: mas como tem um produto específico que tem 10 quantidades acrescentamos o igual (=)
+        <br><br>
 
-```sql 
-SELECT COUNT(*) AS
-produtos_baixo_estoque
-FROM produtos 
-WHERE estoque >= 10;
-```
-Para ver a quantidade de um total produto:
+        <h3>Avaliação Geral</h3>
 
-```sql
-SELECT COUNT(*) AS total_Perifericos
-FROM produtos
-WHERE categoria = 'Perifericos';
-```
+        <input type="radio"
+        id="otimo"
+        name="avaliacao"
+        value="otimo">
 
->Pra ver o roduto mais caro 
+        <label for="otimo">
+            Ótimo
+        </label>
 
-```sql
-SELECT MAX(preco)
-AS maior_preco
-FROM produtos;
-```
- Caso você queria saber qual o produto mais caro fazer assim :
+        <br>
 
-```sql
-SELECT nome,preco
-FROM produtos
-ORDER BY preco DESC;
-```
+        <input type="radio"
+        id="bom"
+        name="avaliacao"
+        value="bom">
 
- Qual o produto mais barato:
+        <label for="bom">
+            Bom
+        </label>
 
-```sql
-SELECT Min(preco)
-AS menor_preco
-FROM produtos;
-```
- Para obter a média de uma coluna :
+        <br>
 
-```sql
-SELECT AVG(preco)
-AS media_preços
-FROM PRODUTOS;
-```
-Se eu quiser uma média de preços arredondada mais exta eu utilizo:
+        <input type="radio"
+        id="regular"
+        name="avaliacao"
+        value="regular">
 
-```sql
-SELECT ROUND (avg
-(preco),2)AS 
-media_correta
-FROM produtos;
-```
-Para ver uma tabela com o preço minímo e maxímo eu uso:
-```sql
-SELECT
-MAX(preco) AS maior_preco,
-MIN(preco) AS menor_preco,
-ROUND(AVG(preco),2)AS media 
-FROM produtos;
-```
+        <label for="regular">
+            Regular
+        </label>
 
-O tanto que vou faturar se vender tudo:
-```sql
-SELECT sum(preco * estoque) AS
-total_faturamento
-FROM produtos;`
-```
+        <br>
+
+        <input type="radio"
+        id="ruim"
+        name="avaliacao"
+        value="ruim">
+
+        <label for="ruim">
+            Ruim
+        </label>
+
+        <br><br>
+
+        <h3>Serviços Utilizado
+
+
+
+
