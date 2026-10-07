@@ -55,7 +55,7 @@ INSERT INTO emprestimos (livro, id_aluno) VALUES
 ('O beijo da neve', 10);
 ```
 5- Para mostrar as tabelas:
-```sql
+
 ![alt text](image-2.png)
 ![alt text](image-3.png)
 

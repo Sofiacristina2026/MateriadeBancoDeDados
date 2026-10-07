@@ -87,4 +87,4 @@ FROM clientes
 LEFT JOIN pedidos ON pedidos.id_cliente = clientes.id
 WHERE pedidos.id IS NULL;
 ```
-8- 
+Tudo isso é muio importante favor estudar !
