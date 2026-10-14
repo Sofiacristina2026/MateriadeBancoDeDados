@@ -147,6 +147,6 @@ SELECT * FROM setores;
 ```
 ![alt text](image-4.png)
 
-7-
+7-Ultima etapa.
  Dessa maneira fica muito mais fácil de modificar as colunas separadas depois:
  ![alt text](image-5.png)
