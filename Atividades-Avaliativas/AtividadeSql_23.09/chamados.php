@@ -71,3 +71,4 @@ if ($metodo == "DELETE") {
     echo json_encode(["Mensagem" => "Produto deletado com sucesso!"]);
 }
 
+//Atividade 
