@@ -150,3 +150,4 @@ SELECT * FROM setores;
 7-Ultima etapa.
  Dessa maneira fica muito mais fácil de modificar as colunas separadas depois:
  ![alt text](image-5.png)
+ 
