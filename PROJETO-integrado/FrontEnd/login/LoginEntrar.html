@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SenaiHUB - Login</title>
+
+    <style>
+        /* Configuração geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px;
+            background-color: #222;
+        }
+
+        /* Imagem de fundo atrás do cadastro */
+        .imagem-fundo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: -1;
+        }
+
+        /* Caixa principal do cadastro */
+        .caixa-cadastro {
+            position: relative;
+            z-index: 1;
+            background-color: #e21a3b;
+            color: white;
+            width: 500%;
+            max-width: 500px;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px zrgba(0, 0, 0, 0.4);
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        /* Espaçamento entre os campos */
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        /* Texto dos campos */
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        /* Campos de preenchimento */
+        input {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Destaque ao selecionar um campo */
+        input:focus {
+            box-shadow: 0 0 0 2px #ffb3bd;
+        }
+
+        /* Requisitos da senha */
+        .requisitos {
+            display: none;
+            background-color: white;
+            color: #333;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        /* Mostra os requisitos ao selecionar a senha */
+        .requisitos.visivel {
+            display: block;
+        }
+
+        .requisitos li {
+            list-style: none;
+            color: #777;
+        }
+
+        /* Requisitos cumpridos */
+        .requisitos li.cumprido {
+            color: #16803c;
+        }
+
+        /* Mensagens de validação */
+        #mensagem {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        /* Organização dos botões */
+        .botoes-acesso {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        /* Estilo dos botões */
+        .botoes-acesso button,
+        .botao-entrar {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Botão Cadastrar */
+        .botoes-acesso button {
+            background-color: white;
+            color: #c8102e;
+            border: none;
+        }
+
+        .botoes-acesso button:hover {
+            background-color: #eeeeee;
+        }
+
+        /* Botão Entrar */
+        .botao-entrar {
+            display: block;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .botao-entrar:hover {
+            background-color: #a50d25;
+        }
+
+        /* Adaptação para telas pequenas */
+        @media (max-width: 480px) {
+            .caixa-cadastro {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+  <img
+    src="fotos/fotoPrincipal.png"
+    alt="Imagem de fundo do SenaiHUB"
+    class="imagem-fundo"
+    <!-- Define a codificação para aceitar acentos e caracteres especiais -->
+    <meta charset="UTF-8">
+
+    <!-- Faz o site se adaptar a diferentes tamanhos de tela -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Define o título que aparece na aba do navegador -->
+    <title>SenaiHUB - Entrar</title>
+
+    <!-- Início do CSS: responsável pela aparência da página -->
+    <style>
+
+        /* Aplica configurações básicas a todos os elementos */
+        * {
+            margin: 0; /* Remove as margens externas */
+            padding: 0; /* Remove os espaçamentos internos */
+            box-sizing: border-box; /* Inclui bordas e espaçamentos no tamanho dos elementos */
+        }
+
+        /* Configura o corpo inteiro da página */
+        body {
+            background-color: #f8f8f8; /* Define o fundo cinza-claro */
+            font-family: Arial, sans-serif; /* Define a fonte dos textos */
+
+            display: flex; /* Ativa o Flexbox para organizar os elementos */
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center; /* Centraliza verticalmente */
+
+            min-height: 100vh; /* Faz a página ocupar pelo menos a altura da tela */
+            padding: 20px; /* Evita que o formulário encoste nas bordas */
+        }
+
+        /* Estiliza a caixa principal do formulário */
+        .caixa-cadastro {
+            background-color: #e21a3b; /* Define a cor vermelha da caixa */
+            color: white; /* Deixa os textos brancos */
+
+            width: 100%; /* Permite que a caixa use a largura disponível */
+            max-width: 400px; /* Limita a largura máxima da caixa */
+
+            padding: 35px; /* Cria espaço entre o conteúdo e as bordas */
+            border-radius: 25px; /* Arredonda os cantos do retângulo */
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            /* Adiciona uma sombra para destacar a caixa */
+        }
+
+        /* Estiliza o título do formulário */
+        h1 {
+            text-align: center; /* Centraliza o título */
+            margin-bottom: 30px; /* Cria espaço abaixo do título */
+            font-size: 28px; /* Define o tamanho da letra */
+        }
+
+        /* Organiza cada campo do formulário */
+        .campo {
+            margin-bottom: 18px; /* Separa um campo do outro */
+        }
+
+        /* Estiliza os nomes dos campos */
+        label {
+            display: block; /* Faz cada rótulo ocupar uma linha */
+            margin-bottom: 7px; /* Cria espaço antes do campo */
+            font-weight: bold; /* Deixa o texto em negrito */
+        }
+
+        /* Estiliza as caixas onde o usuário digita */
+        input {
+            width: 100%; /* Faz o campo ocupar toda a largura disponível */
+            padding: 11px; /* Aumenta o espaço interno do campo */
+
+            border: none; /* Remove a borda padrão */
+            border-radius: 8px; /* Arredonda os cantos do campo */
+
+            font-size: 14px; /* Define o tamanho do texto digitado */
+            outline: none; /* Remove o contorno padrão do navegador */
+        }
+
+        /* Destaca o campo que está sendo preenchido */
+        input:focus {
+            box-shadow: 0 0 0 2px #ffb3bd;
+            /* Mostra um contorno rosa ao selecionar o campo */
+        }
+
+        /* Organiza os botões um abaixo do outro */
+        .botoes-acesso {
+            display: flex; /* Ativa o Flexbox nos botões */
+            flex-direction: column; /* Coloca os botões em coluna */
+            gap: 12px; /* Define o espaço entre os botões */
+            margin-top: 25px; /* Cria espaço acima dos botões */
+        }
+
+        /* Define o estilo compartilhado pelos dois botões */
+        .botoes-acesso button,
+        .botao-entrar {
+            width: 100%; /* Faz os botões ocuparem toda a largura da caixa */
+            padding: 12px; /* Aumenta a área interna dos botões */
+
+            border-radius: 10px; /* Arredonda os cantos */
+            font-size: 16px; /* Define o tamanho do texto */
+            font-weight: bold; /* Deixa o texto em negrito */
+
+            text-align: center; /* Centraliza o texto */
+            text-decoration: none; /* Remove o sublinhado do link */
+            cursor: pointer; /* Mostra a mão ao passar o mouse */
+        }
+
+        /* Estiliza o botão Cadastrar */
+        .botoes-acesso button {
+            background-color: white; /* Define o fundo branco */
+            color: #c8102e; /* Define o texto vermelho */
+            border: none; /* Remove a borda */
+        }
+
+        /* Muda a cor do botão Cadastrar ao passar o mouse */
+        .botoes-acesso button:hover {
+            background-color: #eeeeee; /* Deixa o fundo cinza-claro */
+        }
+
+        /* Estiliza o botão Entrar */
+        .botao-entrar {
+            display: block; /* Permite definir o tamanho do link como botão */
+
+            background-color: transparent; /* Deixa o fundo transparente */
+            color: white; /* Define o texto branco */
+            border: 2px solid white; /* Cria uma borda branca */
+        }
+
+        /* Muda a aparência do botão Entrar ao passar o mouse */
+        .botao-entrar:hover {
+            background-color: #a50d25; /* Escurece o fundo vermelho */
+        }
+
+        
+
+    </style>
+    <!-- Fim do CSS -->
+
+</head>
+
+<body>
+
+    <!-- Início da caixa principal do cadastro -->
+    <section class="caixa-cadastro">
+
+        <!-- Título exibido na parte superior da caixa -->
+        <h1>SenaiHUB</h1>
+
+        <!-- Formulário que reúne os dados do usuário -->
+        <form action="" method="post">
+
+           </div>
+
+            <!-- Campo para digitar o endereço de email -->
+            <div class="campo">
+
+                <!-- Identifica o campo de email -->
+                <label for="email">Email:</label>
+
+                <!-- Solicita um email em formato válido e exige preenchimento -->
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu email"
+                    required
+                >
+
+            </div>
+            <!-- Campo para informar a senha -->
+            <div class="campo">
+
+               <label for="Senha">Senha:</label>
+
+                <!-- Permite digitar uma senha -->
+                <input
+                    type="sen"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                >
+
+            </div>
+
+            <!-- Agrupa os botões de acesso à plataforma -->
+            <div class="botoes-acesso">
+
+              <!-- Link que direciona para a página de login -->
+                <a href="..\PaginaInicial.html" class="botao-entrar">
+                    Entrar
+                </a>
+
+            </div>
+            <!-- Fim dos botões -->
+
+        </form>
+        <!-- Fim do formulário -->
+
+    </section>
+    <!-- Fim da caixa principal -->
+
+</body>
+</html>
