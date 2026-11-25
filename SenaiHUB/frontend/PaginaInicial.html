@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SenaiHub</title>
+    
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            scroll-behavior: smooth;
+        }
+
+        /* Menu superior */
+        .navbar-gamer {
+            display: flex;
+            background-color: rgb(243, 18, 18);
+            padding: 15px 30px;
+            min-height: 55px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .menu-links {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .menu-links a {
+            font-size: 14px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .menu-links a:hover {
+            opacity: 0.85;
+        }
+
+        /* Apresentação principal */
+        .inicio {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 10%;
+            gap: 40px;
+            position: relative;
+            min-height: 650px;
+            overflow: hidden;
+        }
+
+        .conteudo {
+            max-width: 350px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .subtitulo {
+            color: #3677c8;
+            font-weight: bold;
+            letter-spacing: 3px;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin: 20px 0;
+            color: #e71a1a;
+        }
+
+        h1 span {
+            color: #0e0d0d;
+        }
+
+        .conteudo p {
+            color: #66758d;
+            line-height: 1.7;
+        }
+
+        /* Imagem de fundo */
+        .imagem-fundo {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 65%;
+            height: 100%;
+            object-fit: cover;
+
+            -webkit-mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.2) 20%,
+                    black 55%);
+
+            mask-image: linear-gradient(to right,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.2) 20%,
+                    black 55%);
+
+            z-index: 1;
+        }
+
+        /* Recursos */
+        .recursos {
+            padding: 60px 10%;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background-color: white;
+        }
+
+        .recursos h2 {
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .recursos>p {
+            color: #f12c1d;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: left;
+            box-shadow: 0 5px 20px #e0e8f2;
+        }
+
+        .card h3 {
+            margin: 0 0 15px;
+        }
+
+        .card p {
+            color: #718096;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            color: #3475c5;
+            font-weight: bold;
+        }
+
+        /* Agenda escolar */
+        .card-agenda {
+            grid-column: span 2;
+        }
+
+        /* Calendário escolar escrito */
+        .calendario-escrito {
+            margin-top: 20px;
+        }
+
+        .info-semestre {
+            background: #fff5f5;
+            border-left: 4px solid #e71a1a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .meses-calendario {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .mes-calendario {
+            border: 1px solid #e0e8f2;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+
+        .mes-calendario h4 {
+            background: #e71a1a;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+        }
+
+        .mes-calendario ul {
+            padding: 12px 12px 12px 30px;
+        }
+
+        .mes-calendario li {
+            color: #596579;
+            font-size: 13px;
+            line-height: 1.6;
+            margin-bottom: 9px;
+        }
+
+        .dias-letivos {
+            background: #f1f5f9;
+            padding: 9px 12px;
+            color: #374151;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .legenda-calendario {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+            color: #596579;
+            line-height: 1.8;
+            font-size: 13px;
+        }
+
+        /* Planejamento diário */
+        .card-planejamento {
+            grid-column: span 2;
+        }
+
+        .data-planejamento {
+            margin: 15px 0;
+        }
+
+        .data-planejamento label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .data-planejamento input {
+            padding: 10px;
+            border: 1px solid #d5dce5;
+            border-radius: 8px;
+            width: 100%;
+            font-size: 15px;
+        }
+
+        .tabela-horarios {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .tabela-horarios th {
+            background-color: #e71a1a;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .tabela-horarios td {
+            padding: 8px;
+            border-bottom: 1px solid #e0e8f2;
+        }
+
+        .tabela-horarios td:first-child {
+            width: 130px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .tabela-horarios input {
+            width: 100%;
+            padding: 9px;
+            border: 1px solid #dce2eb;
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .tabela-horarios input:focus {
+            border-color: #e71a1a;
+            box-shadow: 0 0 0 2px rgba(231, 26, 26, 0.15);
+        }
+
+        /* Eventos e recados */
+        .card-eventos {
+            grid-column: span 2;
+        }
+
+        .form-recado {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .form-recado input,
+        .form-recado textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d5dce5;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-recado input:focus,
+        .form-recado textarea:focus {
+            border-color: #e71a1a;
+        }
+
+        .form-recado textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .botao {
+            background-color: #e71a1a;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .botao:hover {
+            background-color: #c81414;
+        }
+
+        .lista-recados {
+            margin-top: 20px;
+        }
+
+        .recado {
+            background-color: #fff5f5;
+            border-left: 4px solid #e71a1a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .recado h4 {
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .recado p {
+            margin-bottom: 10px;
+            overflow-wrap: anywhere;
+        }
+
+        .recado small {
+            color: #718096;
+        }
+
+        .excluir {
+            background-color: white;
+            color: #e71a1a;
+            border: 1px solid #e71a1a;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .excluir:hover {
+            background-color: #e71a1a;
+            color: white;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: rgb(243, 32, 32);
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .meses-calendario {
+                grid-template-columns: 1fr;
+            }
+
+            .card-agenda,
+            .card-planejamento,
+            .card-eventos {
+                grid-column: span 1;
+            }
+
+            .navbar-gamer {
+                height: auto;
+                flex-direction: column;
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .menu-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+
+            .inicio {
+                flex-direction: column;
+                padding: 50px 7%;
+                align-items: flex-start;
+            }
+
+            .imagem-fundo {
+                width: 90%;
+                opacity: 0.45;
+            }
+
+            .conteudo {
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .recursos {
+                padding: 40px 5%;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Menu superior -->
+    <header class="navbar-gamer">
+
+        <div class="logo">SENAIHUB</div>
+
+        <nav class="menu-links">
+            <a href="#inicio">Início</a>
+            <a href="#agenda">Agenda</a>
+            <a href="#planejamento">Planejamento</a>
+            <a href="#eventos">Eventos</a>
+        </nav>
+
+        <div id="infoUsuario" style="color: white; font-size: 14px; display: flex; align-items: center;"></div>
+
+    </header>
+
+    <main>
+
+        <!-- Apresentação principal -->
+        <section class="inicio" id="inicio">
+
+            <div class="conteudo">
+
+                <span class="subtitulo">ORGANIZE SUA ROTINA</span>
+
+                <h1>
+                    Organize hoje.
+                    <span>Conquiste amanhã.</span>
+                </h1>
+
+                <p>
+                    Tenha mais controle sobre suas tarefas,
+                    compromissos e eventos do SENAI em um só lugar.
+                </p>
+
+            </div>
+
+            <img src="fotos/foto.jpg" alt="Imagem de destaque do SenaiHub" class="imagem-fundo">
+
+        </section>
+
+        <!-- Recursos do site -->
+        <section class="recursos">
+
+            <h2>O que você encontra por aqui?</h2>
+
+            <p>Ferramentas para facilitar sua organização.</p>
+
+            <div class="cards">
+
+                <!-- Agenda / Calendário Escolar -->
+                <article class="card card-agenda" id="agenda">
+
+                    <h3>Agenda / Calendário Escolar 2026</h3>
+
+                    <p>
+                        Consulte os feriados, reuniões, compensações,
+                        recessos e eventos programados pelo SENAI-SP.
+                    </p>
+
+                    <div class="calendario-escrito">
+
+                        <!-- Informações do primeiro semestre -->
+                        <div class="info-semestre">
+
+                            <strong>1º SEMESTRE</strong><br>
+
+                            Início das aulas: 21 de janeiro<br>
+                            Término: 24 de junho<br>
+                            Total de dias letivos: 101
+
+                        </div>
+
+                        <div class="meses-calendario">
+
+                            <!-- JANEIRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Janeiro</h4>
+
+                                <ul>
+                                    <li>01 - Confraternização Universal - Atividades suspensas.</li>
+                                    <li>15 - Reunião de Pais dos alunos do 2º, 3º e 4º termos às 8h30 - CT às 13h30.
+                                    </li>
+                                    <li>16 - Reunião de Pais de novos alunos - CT às 8h30.</li>
+                                    <li>19 - Emenda de feriado.</li>
+                                    <li>20 - São Sebastião de Ribeirão Preto - Atividades suspensas.</li>
+                                    <li>22 - Reunião de Pais de novos alunos - CAI às 8h30.</li>
+                                    <li>26 - Início das aulas, semestre letivo e acolhimento.</li>
+                                    <li>28 - Assembleia Geral da AAPM.</li>
+                                </ul>
+
+                                <div class="dias-letivos">5 dias letivos</div>
+
+                            </div>
+
+                            <!-- FEVEREIRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Fevereiro</h4>
+
+                                <ul>
+                                    <li>07 - Compensação de emenda - Aula de segunda-feira.</li>
+                                    <li>11 - Reunião de Brigada.</li>
+                                    <li>13 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                    <li>16 - Emenda de feriado.</li>
+                                    <li>17 - Carnaval - Atividades suspensas.</li>
+                                    <li>18 - Emenda de feriado.</li>
+                                </ul>
+
+                                <div class="dias-letivos">18 dias letivos</div>
+
+                            </div>
+
+                            <!-- MARÇO -->
+                            <div class="mes-calendario">
+
+                                <h4>Março</h4>
+
+                                <ul>
+                                    <li>07 - Compensação de emenda - Aula de sexta-feira.</li>
+                                </ul>
+
+                                <div class="dias-letivos">23 dias letivos</div>
+
+                            </div>
+
+                            <!-- ABRIL -->
+                            <div class="mes-calendario">
+
+                                <h4>Abril</h4>
+
+                                <ul>
+                                    <li>02 - Reunião de Pré-Conselho - Dia letivo.</li>
+                                    <li>03 - Paixão de Cristo - Atividades suspensas.</li>
+                                    <li>07 - Compensação de emenda - Aula de sexta-feira.</li>
+                                    <li>20 - Emenda de feriado.</li>
+                                    <li>21 - Tiradentes.</li>
+                                    <li>30 - Reunião de Brigada.</li>
+                                </ul>
+
+                                <div class="dias-letivos">20 dias letivos</div>
+
+                            </div>
+
+                            <!-- MAIO -->
+                            <div class="mes-calendario">
+
+                                <h4>Maio</h4>
+
+                                <ul>
+                                    <li>01 - Dia do Trabalhador.</li>
+                                    <li>05 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                    <li>18 a 22 - SENATIVA - Semana da Indústria.</li>
+                                    <li>30 - Compensação de emenda - Aula de sexta-feira.</li>
+                                </ul>
+
+                                <div class="dias-letivos">21 dias letivos</div>
+
+                            </div>
+
+                            <!-- JUNHO -->
+                            <div class="mes-calendario">
+
+                                <h4>Junho</h4>
+
+                                <ul>
+                                    <li>04 - Corpus Christi - Atividades suspensas.</li>
+                                    <li>05 - Emenda de feriado.</li>
+                                    <li>19 - Feriado Municipal - Aniversário de Ribeirão Preto.</li>
+                                    <li>23 - Reunião de Conselho de Classe - Dia letivo.</li>
+                                    <li>23 - Encerramento do período de avaliação - Dia letivo.</li>
+                                    <li>24 a 30 - Pedidos de reconsideração do resultado final.</li>
+                                </ul>
+
+                                <div class="dias-letivos">14 dias letivos</div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Informações do segundo semestre -->
+                        <div class="info-semestre" style="margin-top: 25px;">
+
+                            <strong>2º SEMESTRE</strong><br>
+
+                            Início das aulas: 27 de julho<br>
+                            Término: 18 de dezembro<br>
+                            Total de dias letivos: 103
+
+                        </div>
+
+                        <div class="meses-calendario">
+
+                            <!-- JULHO -->
+                            <div class="mes-calendario">
+
+                                <h4>Julho</h4>
+
+                                <ul>
+                                    <li>01 a 15 - Férias de docentes.</li>
+                                    <li>04 - Compensação de emenda.</li>
+                                    <li>09 - Feriado Estadual - Revolução Constitucionalista - Atividades suspensas.
+                                    </li>
+                                    <li>10 - Emenda de feriado.</li>
+                                    <li>16 - Reunião de Pais de alunos novos às 9h.</li>
+                                    <li>17 - Reunião de Pais dos alunos do 2º, 3º e 4º termos às 18h30 - CT às 15h.</li>
+                                    <li>22 - Início das aulas, semestre letivo e acolhimento.</li>
+                                </ul>
+
+                                <div class="dias-letivos">8 dias letivos</div>
+
+                            </div>
+
+                            <!-- AGOSTO -->
+                            <div class="mes-calendario">
+
+                                <h4>Agosto</h4>
+
+                                <ul>
+                                    <li>04 - Reunião de Brigada.</li>
+                                    <li>05 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                </ul>
+
+                                <div class="dias-letivos">21 dias letivos</div>
+
+                            </div>
+
+                            <!-- SETEMBRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Setembro</h4>
+
+                                <ul>
+                                    <li>01 a 07 - Comemoração da Semana da Pátria.</li>
+                                    <li>07 - Dia da Independência do Brasil - Atividades suspensas.</li>
+                                    <li>18 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                    <li>21 a 25 - XIV Semana Cultural.</li>
+                                </ul>
+
+                                <div class="dias-letivos">21 dias letivos</div>
+
+                            </div>
+
+                            <!-- OUTUBRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Outubro</h4>
+
+                                <ul>
+                                    <li>12 - Dia de Nossa Senhora de Aparecida - Atividades suspensas.</li>
+                                    <li>13 - Dia do Professor - Antecipado para 15/10.</li>
+                                    <li>14 - Pré-Conselho de Classe - Dia letivo - Aula de segunda-feira.</li>
+                                    <li>15 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                </ul>
+
+                                <div class="dias-letivos">20 dias letivos</div>
+
+                            </div>
+
+                            <!-- NOVEMBRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Novembro</h4>
+
+                                <ul>
+                                    <li>02 - Dia de Finados - Atividades suspensas.</li>
+                                    <li>11 - Reunião de Brigada.</li>
+                                    <li>15 - Dia da Proclamação da República - Atividades suspensas.</li>
+                                    <li>20 - Dia da Consciência Negra - Atividades suspensas.</li>
+                                    <li>23 - Tema Transversal: NPAQA/Cantina/AAPM - Reunião da CIPA.</li>
+                                </ul>
+
+                                <div class="dias-letivos">19 dias letivos</div>
+
+                            </div>
+
+                            <!-- DEZEMBRO -->
+                            <div class="mes-calendario">
+
+                                <h4>Dezembro</h4>
+
+                                <ul>
+                                    <li>01 a 18 - Período de Recuperação Intensiva e Compensação de ausências.</li>
+                                    <li>07 - Reunião de Brigada, CIPA, Cantina e AAPM.</li>
+                                    <li>16 - Conselho de Classe do Itinerário de Formação Profissional Técnica - Aula de
+                                        segunda-feira.</li>
+                                    <li>18 - Encerramento do período de avaliação.</li>
+                                    <li>18 - Conselho de Classe da Aprendizagem Industrial - Dia letivo.</li>
+                                    <li>25 - Natal.</li>
+                                    <li>17 a 31 - Reuniões Pedagógica e Setorial.</li>
+                                    <li>16 a 26 - Pedidos de reconsideração do resultado final.</li>
+                                    <li>21 a 31 - Treinamento de Recesso, Planejamento Integrado e Reunião Pedagógica.
+                                    </li>
+                                </ul>
+
+                                <div class="dias-letivos">14 dias letivos</div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Compensações -->
+                        <div class="legenda-calendario">
+
+                            <strong>Compensações de aulas</strong>
+
+                            <ul>
+                                <li>19/01 - Compensação em 17/01.</li>
+                                <li>16/02 - Compensação em 07/02.</li>
+                                <li>18/02 - Compensação em 07/03.</li>
+                                <li>20/04 - Compensação em 18/04.</li>
+                                <li>05/06 - Compensação em 30/05.</li>
+                                <li>10/07 - Compensação em 04/07.</li>
+                            </ul>
+
+                            <br>
+
+                            <strong>Total do ano: 204 dias letivos.</strong>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+                <!-- Planejamento diário -->
+                <article class="card card-planejamento" id="planejamento">
+
+                    <h3>Planejamento Diário</h3>
+
+                    <p>
+                        Organize seus horários e registre as aulas
+                        de cada dia. (Salva automaticamente)
+                    </p>
+
+                    <div class="data-planejamento">
+
+                        <label for="dataAula">Selecione o dia:</label>
+
+                        <input type="date" id="dataAula">
+
+                    </div>
+
+                    <table class="tabela-horarios">
+
+                        <thead>
+                            <tr>
+                                <th>Horário</th>
+                                <th>Aula / Atividade</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="horarios">
+
+                            <tr>
+                                <td>07:00 - 08:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>08:00 - 09:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>09:00 - 10:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>10:00 - 11:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>11:00 - 12:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>12:00 - 13:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>13:00 - 14:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>14:00 - 15:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>15:00 - 16:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>16:00 - 17:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                            <tr>
+                                <td>17:00 - 18:00</td>
+                                <td><input type="text" placeholder="Digite sua aula..."></td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </article>
+
+                <!-- Eventos e recados -->
+                <article class="card card-eventos" id="eventos">
+
+                    <h3>Eventos e Recados</h3>
+
+                    <p>
+                        Confira comunicados, avisos importantes
+                        e lembretes da escola.
+                    </p>
+
+                    <form class="form-recado" id="formRecado">
+
+                        <input type="text" id="tituloRecado" placeholder="Título do recado" required>
+
+                        <textarea id="textoRecado" placeholder="Escreva seu recado aqui..." required></textarea>
+
+                        <button type="submit" class="botao">
+                            Adicionar recado
+                        </button>
+
+                    </form>
+
+                    <div class="lista-recados" id="listaRecados">
+
+                        <p>Nenhum recado cadastrado ainda.</p>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+
+        <p>
+            © 2026 SenaiHub | Organização que transforma sua rotina.
+        </p>
+
+    </footer>
+
+    <!-- Scripts de funcionamento -->
+    <script>
+
+        // PLANEJAMENTO DIÁRIO
+        const dataAula = document.getElementById("dataAula");
+        const camposAula = document.querySelectorAll("#horarios input");
+
+        // Seleciona a data atual
+        const hoje = new Date();
+        const dataAtual =
+            hoje.getFullYear() + "-" +
+            String(hoje.getMonth() + 1).padStart(2, "0") + "-" +
+            String(hoje.getDate()).padStart(2, "0");
+
+        if (dataAula) {
+            dataAula.value = dataAtual;
+        }
+
+        // Carrega as aulas da data selecionada
+        function carregarAulas() {
+            if (!dataAula) return;
+            const aulasSalvas = JSON.parse(
+                localStorage.getItem("aulas_" + dataAula.value)
+            ) || [];
+
+            camposAula.forEach((campo, indice) => {
+                campo.value = aulasSalvas[indice] || "";
+            });
+        }
+
+        // Salva as aulas automaticamente ao digitar
+        camposAula.forEach((campo) => {
+            campo.addEventListener("input", function () {
+                if (!dataAula) return;
+                const aulas = Array.from(camposAula).map(c => c.value);
+                localStorage.setItem(
+                    "aulas_" + dataAula.value,
+                    JSON.stringify(aulas)
+                );
+            });
+        });
+
+        // Quando mudar a data, carrega outro planejamento
+        if (dataAula) {
+            dataAula.addEventListener("change", carregarAulas);
+            carregarAulas();
+        }
+
+
+        // EVENTOS E RECADOS
+        const formRecado = document.getElementById("formRecado");
+        const listaRecados = document.getElementById("listaRecados");
+
+        let recados = JSON.parse(
+            localStorage.getItem("recadosSenaiHub")
+        ) || [];
+
+        // Mostra os recados na tela
+        function mostrarRecados() {
+            if (!listaRecados) return;
+            listaRecados.innerHTML = "";
+
+            if (recados.length === 0) {
+                listaRecados.innerHTML = "<p style='color: #718096; font-style: italic;'>Nenhum recado cadastrado ainda.</p>";
+                return;
+            }
+
+            recados.forEach((recado, indice) => {
+                const caixa = document.createElement("div");
+                caixa.className = "recado";
+
+                const titulo = document.createElement("h4");
+                titulo.textContent = recado.titulo;
+
+                const texto = document.createElement("p");
+                texto.textContent = recado.texto;
+
+                const data = document.createElement("small");
+                data.textContent = "Postado em: " + recado.data;
+
+                const botaoExcluir = document.createElement("button");
+                botaoExcluir.textContent = "Excluir Recado";
+                botaoExcluir.className = "excluir";
+
+                botaoExcluir.addEventListener("click", function () {
+                    recados.splice(indice, 1);
+                    salvarRecados();
+                });
+
+                caixa.appendChild(titulo);
+                caixa.appendChild(texto);
+                caixa.appendChild(data);
+                caixa.appendChild(document.createElement("br"));
+                caixa.appendChild(botaoExcluir);
+
+                listaRecados.appendChild(caixa);
+            });
+        }
+
+        // Adiciona um novo recado
+        if (formRecado) {
+            formRecado.addEventListener("submit", function (evento) {
+                evento.preventDefault();
+
+                const campoTitulo = document.getElementById("tituloRecado");
+                const campoTexto = document.getElementById("textoRecado");
+
+                const novoRecado = {
+                    titulo: campoTitulo.value.trim(),
+                    texto: campoTexto.value.trim(),
+                    data: new Date().toLocaleDateString("pt-BR")
+                };
+
+                recados.unshift(novoRecado); // Adiciona no início da lista
+                salvarRecados();
+                formRecado.reset();
+            });
+        }
+
+        // Salva os recados no navegador
+        function salvarRecados() {
+            localStorage.setItem(
+                "recadosSenaiHub",
+                JSON.stringify(recados)
+            );
+            mostrarRecados();
+        }
+
+        mostrarRecados();
+
+    </script>
+
+    <!-- Script de conexão com o MongoDB e Autenticação -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>

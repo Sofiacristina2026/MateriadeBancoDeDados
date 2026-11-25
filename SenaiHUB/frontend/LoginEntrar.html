@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SenaiHUB - Login</title>
+
+    <style>
+        /* Configuração geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        /* Configuração do corpo da página */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px;
+            background-color: #222;
+        }
+
+        /* Imagem de fundo sem transparência */
+        .imagem-fundo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Caixa principal do login */
+        .caixa-cadastro {
+            position: relative;
+            z-index: 1;
+            background-color: #e21a3b;
+            color: white;
+            width: 50%;
+            max-width: 400px;
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 20px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        /* Espaçamento entre os campos */
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        /* Texto dos campos */
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        /* Campos de preenchimento */
+        input {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Destaque ao selecionar um campo */
+        input:focus {
+            box-shadow: 0 0 0 2px #ffb3bd;
+        }
+
+        /* Organização dos botões */
+        .botoes-acesso {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        /* Estilo do botão Entrar */
+        .botao-entrar {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        /* Efeito ao passar o mouse */
+        .botao-entrar:hover {
+            background-color: #a50d25;
+        }
+
+        /* Adaptação para telas pequenas */
+        @media (max-width: 480px) {
+            .caixa-cadastro {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Imagem original ocupando toda a tela -->
+    <img
+        src="fotos/fotoPrincipal.png"
+        alt="Imagem de fundo do SenaiHUB"
+        class="imagem-fundo"
+    >
+
+    <!-- Caixa principal do login -->
+    <section class="caixa-cadastro">
+
+        <h1>SenaiHUB</h1>
+
+        <!-- Formulário de login -->
+        <form id="formLogin">
+
+            <!-- Campo de email -->
+            <div class="campo">
+                <label for="email">Email:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu email"
+                    required
+                >
+            </div>
+
+            <!-- Campo de senha -->
+            <div class="campo">
+                <label for="senha">Senha:</label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Digite sua senha"
+                    required
+                >
+            </div>
+
+            <!-- Mensagem de status ou erro -->
+            <p id="mensagemLogin" role="status" aria-live="polite" style="font-size: 13px; line-height: 1.5; margin-top: 10px; text-align: center;"></p>
+
+            <!-- Botão de acesso -->
+            <div class="botoes-acesso">
+
+                <button type="submit" class="botao-entrar">
+                    Entrar
+                </button>
+
+                <a href="cadastro.html" style="color: white; text-align: center; font-size: 14px; margin-top: 10px; text-decoration: underline;">
+                    Não tem conta? Cadastre-se aqui
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+
+    <!-- Script de conexão com o MongoDB -->
+    <script src="script.js"></script>
+</body>
+</html>

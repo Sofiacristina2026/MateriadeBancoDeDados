@@ -1,0 +1,430 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SenaiHUB - Cadastro</title>
+
+    <style>
+        /* Configuração geral */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
+            padding: 80px;
+            background-color: #0f0f0f;
+        }
+
+        /* Imagem de fundo atrás do cadastro */
+        .imagem-fundo {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        /* Caixa principal do cadastro */
+        .caixa-cadastro {
+            position: relative;
+            z-index: 1;
+            background-color: #e21a3b;
+            color: white;
+            width: 50%;
+            max-width: 500px;
+            padding: 80px;
+            border-radius: 25px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Título */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        /* Espaçamento entre os campos */
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        /* Aumenta a distância entre email e idade */
+        .campo-email {
+            margin-bottom: 23px;
+        }
+
+        /* Texto dos campos */
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        /* Campos de preenchimento */
+        input {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        /* Destaque ao selecionar um campo */
+        input:focus {
+            box-shadow: 0 0 0 2px #ffb3bd;
+        }
+
+        /* Requisitos da senha - Sempre visível embaixo da senha */
+        .requisitos {
+            display: block;
+            background-color: white;
+            color: #333;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.8;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .requisitos strong {
+            display: block;
+            margin-bottom: 6px;
+            color: #222;
+            font-size: 13px;
+        }
+
+        .requisitos ul {
+            padding-left: 20px;
+        }
+
+        .requisitos li {
+            list-style: disc;
+            color: #777;
+            transition: color 0.2s, font-weight 0.2s;
+        }
+
+        /* Requisito cumprido */
+        .requisitos li.cumprido {
+            color: #16803c;
+            font-weight: bold;
+        }
+
+        /* Mensagem de validação do email */
+        .requisitos-email {
+            display: none;
+            color: white;
+            font-size: 10px;
+            margin-top: 7px;
+        }
+
+        /* Email válido */
+        .email-valido {
+            color: #90ee90;
+        }
+
+        /* Mensagens de validação */
+        #mensagem {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-top: 10px;
+        }
+
+        /* Organização dos botões */
+        .botoes-acesso {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        /* Estilo dos botões */
+        .botoes-acesso button,
+        .botao-entrar {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Botão Cadastrar */
+        .botoes-acesso button {
+            background-color: white;
+            color: #c8102e;
+            border: none;
+        }
+
+        .botoes-acesso button:hover {
+            background-color: #eeeeee;
+        }
+
+        /* Botão Entrar */
+        .botao-entrar {
+            display: block;
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .botao-entrar:hover {
+            background-color: #a50d25;
+        }
+
+        /* Adaptação para telas pequenas */
+        @media (max-width: 480px) {
+            .caixa-cadastro {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img
+        src="fotos/fotoPrincipal.png"
+        alt="Imagem de fundo do SenaiHUB"
+        class="imagem-fundo"
+    >
+
+    <!-- Caixa principal do cadastro -->
+    <section class="caixa-cadastro">
+
+        <h1>Cadastro SenaiHUB</h1>
+
+        <!-- Formulário de cadastro -->
+        <form id="formCadastro">
+
+            <!-- Nome completo -->
+            <div class="campo">
+                <label for="nome">Nome completo:</label>
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite seu nome completo"
+                    required
+                >
+            </div>
+
+            <!-- Email -->
+            <div class="campo campo-email">
+
+                <label for="email">Email:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Digite seu email"
+                    required
+                >
+
+                <!-- Mensagem de validação do email -->
+                <div class="requisitos-email" id="requisitosEmail">
+                    <strong>O email deve conter @</strong>
+                </div>
+
+            </div>
+
+            <!-- Idade -->
+            <div class="campo">
+                <label for="idade">Idade:</label>
+                <input
+                    type="number"
+                    id="idade"
+                    name="idade"
+                    min="14"
+                    max="90"
+                    placeholder="Digite sua idade"
+                >
+            </div>
+
+            <!-- Telefone -->
+            <div class="campo">
+                <label for="telefone">Telefone:</label>
+                <input
+                    type="tel"
+                    id="telefone"
+                    name="telefone"
+                    placeholder="(00) 00000-0000"
+                    maxlength="15"
+                >
+            </div>
+
+            <!-- Senha -->
+            <div class="campo">
+                <label for="senha">Senha:</label>
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="Crie uma senha"
+                    required
+                    autocomplete="new-password"
+                    aria-describedby="requisitos"
+                >
+
+                <!-- Requisitos da senha -->
+                <div class="requisitos" id="requisitos">
+                    <strong>A senha deve conter:</strong>
+
+                    <ul>
+                        <li id="regraTamanho">• Pelo menos 8 caracteres</li>
+                        <li id="regraMaiuscula">• Uma letra maiúscula</li>
+                        <li id="regraMinuscula">• Uma letra minúscula</li>
+                        <li id="regraNumero">• Pelo menos um número</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mensagem de validação -->
+            <p id="mensagem" role="status" aria-live="polite"></p>
+
+            <!-- Botões -->
+            <div class="botoes-acesso">
+
+                <button type="submit">
+                    Cadastrar
+                </button>
+
+                <a href="LoginEntrar.html" class="botao-entrar">
+                    Entrar
+                </a>
+
+            </div>
+        </form>
+    </section>
+
+    <script>
+
+        // Seleciona os elementos do formulário
+        const formulario = document.getElementById("formCadastro");
+        const senha = document.getElementById("senha");
+        const requisitos = document.getElementById("requisitos");
+        const mensagem = document.getElementById("mensagem");
+
+        let senhaValida = false;
+
+
+        // FORMATAÇÃO AUTOMÁTICA DO TELEFONE COM PARÊNTESES E TRAÇO
+        const campoTelefone = document.getElementById("telefone");
+        if (campoTelefone) {
+            campoTelefone.addEventListener("input", function() {
+                // Remove tudo que não for número e limita a 11 dígitos
+                let v = this.value.replace(/\D/g, "").slice(0, 11);
+
+                if (v.length === 0) {
+                    this.value = "";
+                } else if (v.length <= 2) {
+                    this.value = "(" + v;
+                } else if (v.length <= 6) {
+                    this.value = "(" + v.slice(0, 2) + ") " + v.slice(2);
+                } else if (v.length <= 10) {
+                    // Formato fixo: (11) 4321-1234
+                    this.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 6) + "-" + v.slice(6);
+                } else {
+                    // Formato celular: (11) 98765-4321
+                    this.value = "(" + v.slice(0, 2) + ") " + v.slice(2, 7) + "-" + v.slice(7, 11);
+                }
+            });
+        }
+
+
+        // VALIDAÇÃO DO EMAIL
+        const email = document.getElementById("email");
+        const requisitosEmail = document.getElementById("requisitosEmail");
+
+        if (email && requisitosEmail) {
+            email.addEventListener("focus", function() {
+                requisitosEmail.style.display = "block";
+            });
+
+            email.addEventListener("input", function() {
+                if (email.validity.valid && email.value !== "") {
+                    requisitosEmail.innerHTML = "Email válido!";
+                    requisitosEmail.classList.add("email-valido");
+                } else {
+                    requisitosEmail.innerHTML = "O email deve conter @ e ser válido.";
+                    requisitosEmail.classList.remove("email-valido");
+                }
+            });
+        }
+
+
+        // VALIDAÇÃO E REQUISITOS DA SENHA EM TEMPO REAL
+        if (senha) {
+            senha.addEventListener("input", function () {
+                const valor = senha.value;
+
+                const tamanhoValido = valor.length >= 8;
+                const maiusculaValida = /[A-Z]/.test(valor);
+                const minusculaValida = /[a-z]/.test(valor);
+                const numeroValido = /[0-9]/.test(valor);
+
+                atualizarRegra("regraTamanho", tamanhoValido, "Pelo menos 8 caracteres");
+                atualizarRegra("regraMaiuscula", maiusculaValida, "Uma letra maiúscula");
+                atualizarRegra("regraMinuscula", minusculaValida, "Uma letra minúscula");
+                atualizarRegra("regraNumero", numeroValido, "Pelo menos um número");
+
+                senhaValida = tamanhoValido && maiusculaValida && minusculaValida && numeroValido;
+
+                if (senhaValida) {
+                    mensagem.textContent = "Senha atende a todos os requisitos!";
+                    mensagem.style.color = "#90ee90";
+                } else if (valor.length === 0) {
+                    mensagem.textContent = "";
+                } else {
+                    mensagem.textContent = "Sua senha ainda não atende a todos os requisitos.";
+                    mensagem.style.color = "#ffffff";
+                }
+            });
+        }
+
+        // Atualiza cada item da lista de requisitos
+        function atualizarRegra(id, valido, descricao) {
+            const item = document.getElementById(id);
+            if (!item) return;
+
+            if (valido) {
+                item.textContent = "✓ " + descricao;
+                item.classList.add("cumprido");
+            } else {
+                item.textContent = "• " + descricao;
+                item.classList.remove("cumprido");
+            }
+        }
+    </script>
+
+    <!-- Script principal com conexão ao MongoDB -->
+    <script src="script.js"></script>
+</body>
+</html>
